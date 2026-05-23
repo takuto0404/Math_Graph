@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+  --bg: #eef4ff;
+  --bg-deep: #dce9ff;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-strong: rgba(255, 255, 255, 0.96);
+  --text: #14213d;
+  --muted: #496281;
+  --border: rgba(50, 96, 176, 0.16);
+  --accent: #275dd0;
+  --accent-soft: rgba(39, 93, 208, 0.12);
+  --success: #0f9f6e;
+  --danger: #d64545;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #07111f;
+    --bg-deep: #0f1f39;
+    --panel: rgba(9, 19, 35, 0.86);
+    --panel-strong: rgba(11, 23, 42, 0.96);
+    --text: #eef5ff;
+    --muted: #9db4cf;
+    --border: rgba(135, 177, 255, 0.16);
+    --accent: #79a9ff;
+    --accent-soft: rgba(121, 169, 255, 0.14);
+    --success: #36c08f;
+    --danger: #ff7a7a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(98, 146, 255, 0.24), transparent 28%),
+    radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 24%),
+    linear-gradient(180deg, var(--bg), var(--bg-deep));
+}
+
+img {
+  max-width: 100%;
+}
+
+.katex {
+  font-size: 1.18em;
+}
