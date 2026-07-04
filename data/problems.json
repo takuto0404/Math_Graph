@@ -69,7 +69,7 @@
     "x_range": [-1.5, 3.5],
     "y_range": [-8, 8],
     "sample_ranges": [[-1.5, 3.5]],
-    "distractor_ids": ["cubic_basic", "cubic_monotone", "cubic_two_extrema_shifted", "cubic_negative_extrema"]
+    "distractor_ids": ["cubic_shifted_extrema", "cubic_two_extrema_shifted", "cubic_basic", "cubic_monotone"]
   },
   {
     "id": "rational_reciprocal",
@@ -129,7 +129,7 @@
     "x_range": [-4, 4],
     "y_range": [-6, 6],
     "sample_ranges": [[-4, -0.16], [0.16, 4]],
-    "distractor_ids": ["rational_reciprocal", "rational_negative_shifted", "rational_shifted", "rational_double_pole"]
+    "distractor_ids": ["rational_shifted_square", "rational_double_pole", "rational_negative_shifted", "rational_shifted"]
   },
   {
     "id": "rational_double_pole",
@@ -141,7 +141,7 @@
     "x_range": [-3.5, 3.5],
     "y_range": [-4, 4],
     "sample_ranges": [[-3.5, -1.08], [-0.92, 0.92], [1.08, 3.5]],
-    "distractor_ids": ["rational_reciprocal_square", "rational_shifted", "rational_oblique", "rational_negative_shifted"]
+    "distractor_ids": ["rational_shifted_square", "rational_oblique", "rational_reciprocal_square", "rational_shifted"]
   },
   {
     "id": "radical_basic",
@@ -273,7 +273,7 @@
     "x_range": [-5, 3],
     "y_range": [-4, 3],
     "sample_ranges": [[-5, 1.95]],
-    "distractor_ids": ["log_basic", "log_shifted", "log_reflected", "exp_decay"]
+    "distractor_ids": ["log_reflected_shifted", "log_shifted", "log_reflected", "exp_decay"]
   },
   {
     "id": "trig_sin",
@@ -333,7 +333,7 @@
     "x_range": [-2, 8],
     "y_range": [-2, 1.2],
     "sample_ranges": [[-2, 8]],
-    "distractor_ids": ["calc_x_logx", "calc_sinc", "exp_decay", "rational_oblique"]
+    "distractor_ids": ["calc_x2_exp_negx", "calc_x_over_x2p1", "calc_x_logx", "exp_decay"]
   },
   {
     "id": "calc_x_logx",
@@ -345,7 +345,7 @@
     "x_range": [-0.2, 4.5],
     "y_range": [-0.6, 6],
     "sample_ranges": [[0.03, 4.5]],
-    "distractor_ids": ["calc_x_exp_negx", "calc_sinc", "log_basic", "exp_basic"]
+    "distractor_ids": ["calc_x_over_x2p1", "calc_x2_exp_negx", "calc_x_exp_negx", "log_basic"]
   },
   {
     "id": "calc_sinc",
@@ -357,6 +357,234 @@
     "x_range": [-12, 12],
     "y_range": [-0.4, 1.2],
     "sample_ranges": [[-12, -0.18], [0.18, 12]],
-    "distractor_ids": ["calc_x_exp_negx", "calc_x_logx", "trig_sin", "trig_cos"]
+    "distractor_ids": ["trig_cos_double", "trig_sin_double", "trig_sin", "calc_x_exp_negx"]
+  },
+  {
+    "id": "cubic_shifted_extrema",
+    "category": "cubic",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=(x-1)^3-3(x-1)",
+    "formula_python": "(x-1)**3-3*(x-1)",
+    "explanation": "x^3-3x を右に1だけ平行移動した形。極大・極小の位置がそろって横にずれる。",
+    "x_range": [-1.5, 4.5],
+    "y_range": [-4.5, 4.5],
+    "sample_ranges": [[-1.5, 4.5]],
+    "distractor_ids": ["cubic_two_extrema_shifted", "cubic_shifted_basic", "cubic_two_extrema", "cubic_negative_extrema"]
+  },
+  {
+    "id": "rational_shifted_square",
+    "category": "rational",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{1}{(x-1)^2}+1",
+    "formula_python": "1/((x-1)**2)+1",
+    "explanation": "x=1 に縦漸近線、y=1 に水平漸近線をもつ。常に正で、左右から同じ向きに吹き上がる。",
+    "x_range": [-3, 5],
+    "y_range": [0, 8],
+    "sample_ranges": [[-3, 0.82], [1.18, 5]],
+    "distractor_ids": ["rational_reciprocal_square", "rational_shifted", "rational_double_pole", "rational_oblique"]
+  },
+  {
+    "id": "log_reflected_shifted",
+    "category": "exp_log",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=-\\log(x-1)+1",
+    "formula_python": "-log(x-1)+1",
+    "explanation": "縦漸近線が x=1 に移り、右側で単調減少する。平行移動と反転の両方を含む対数関数。",
+    "x_range": [-1, 8],
+    "y_range": [-3, 5],
+    "sample_ranges": [[1.05, 8]],
+    "distractor_ids": ["log_shifted", "log_reflected", "log_left_domain", "exp_shifted"]
+  },
+  {
+    "id": "trig_cos_double",
+    "category": "trig",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\cos 2x",
+    "formula_python": "cos(2*x)",
+    "explanation": "cos x の周期を \\pi に縮めた形で、x=0 で最大値1から始まる。sin 2x と位相の違いで見分けたい。",
+    "x_range": [-6.4, 6.4],
+    "y_range": [-1.6, 1.6],
+    "sample_ranges": [[-6.4, 6.4]],
+    "distractor_ids": ["trig_sin_double", "trig_cos", "trig_sin", "trig_tan"]
+  },
+  {
+    "id": "calc_x_over_x2p1",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{x}{x^2+1}",
+    "formula_python": "x/(x**2+1)",
+    "explanation": "原点対称で、左右に1つずつ極値をもち、両端では0に近づく。細いS字が寝たような形になる。",
+    "x_range": [-5, 5],
+    "y_range": [-0.8, 0.8],
+    "sample_ranges": [[-5, 5]],
+    "distractor_ids": ["calc_x_over_sqrt_x2p1", "calc_x2_over_x2p1", "calc_x3_over_x2p1", "calc_sinc"]
+  },
+  {
+    "id": "calc_x2_exp_negx",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=x^2 e^{-x}",
+    "formula_python": "x**2*exp(-x)",
+    "explanation": "x=0 で接して、x=2 で極大をとったあと 0 に近づく。指数減衰と2次式の積でよく出る形。",
+    "x_range": [-2, 9],
+    "y_range": [-0.5, 2.5],
+    "sample_ranges": [[-2, 9]],
+    "distractor_ids": ["calc_x_exp_negx", "calc_exp_neg_square", "calc_x2_over_x2p1", "calc_x_logx"]
+  },
+  {
+    "id": "cubic_double_root",
+    "category": "cubic",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=x^2(x-3)",
+    "formula_python": "x**2*(x-3)",
+    "explanation": "x=0 でx軸に接し、x=3 で横切る。重解では接し、単解では貫くという典型的な見分けが必要。",
+    "x_range": [-1, 4],
+    "y_range": [-5, 6],
+    "sample_ranges": [[-1, 4]],
+    "distractor_ids": ["cubic_shifted_extrema", "cubic_two_extrema", "cubic_shifted_basic", "cubic_monotone"]
+  },
+  {
+    "id": "rational_same_degree",
+    "category": "rational",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{x^2+1}{x^2-1}",
+    "formula_python": "(x**2+1)/(x**2-1)",
+    "explanation": "x=\\pm1 に縦漸近線、y=1 に水平漸近線をもつ。左右対称で、中央の枝が上か下かを見分けたい。",
+    "x_range": [-3.5, 3.5],
+    "y_range": [-4, 4],
+    "sample_ranges": [[-3.5, -1.08], [-0.92, 0.92], [1.08, 3.5]],
+    "distractor_ids": ["rational_double_pole", "rational_shifted_square", "rational_oblique", "rational_reciprocal_square"]
+  },
+  {
+    "id": "rational_negative_square_shifted",
+    "category": "rational",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=-\\dfrac{1}{(x+1)^2}+2",
+    "formula_python": "-1/((x+1)**2)+2",
+    "explanation": "x=-1 に縦漸近線、y=2 に水平漸近線をもち、両側から下へ落ちる。枝の向きと平行移動を同時に見る。",
+    "x_range": [-5, 3],
+    "y_range": [-3, 3],
+    "sample_ranges": [[-5, -1.18], [-0.82, 3]],
+    "distractor_ids": ["rational_shifted_square", "rational_negative_shifted", "rational_shifted", "rational_reciprocal_square"]
+  },
+  {
+    "id": "radical_abs_root",
+    "category": "radical",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\sqrt{\\left|x\\right|}",
+    "formula_python": "sqrt(abs(x))",
+    "explanation": "y軸対称で、原点に鋭い尖りをもつ。左右両側に定義域が広がる点で \\sqrt{x} と区別したい。",
+    "x_range": [-9, 9],
+    "y_range": [-1, 3.5],
+    "sample_ranges": [[-9, 9]],
+    "distractor_ids": ["radical_semicircle", "radical_basic", "radical_shifted", "radical_root_decay"]
+  },
+  {
+    "id": "radical_root_decay",
+    "category": "radical",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{\\sqrt{x}}{x+1}",
+    "formula_python": "sqrt(x)/(x+1)",
+    "explanation": "x\\ge0 で定義され、いったん上がってから 0 に近づく。根号と分母の増え方の勝負が形に出る。",
+    "x_range": [-0.5, 12],
+    "y_range": [-0.1, 0.8],
+    "sample_ranges": [[0, 12]],
+    "distractor_ids": ["radical_basic", "radical_shifted", "radical_abs_root", "calc_x2_over_x2p1"]
+  },
+  {
+    "id": "calc_x_exp_posx",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=x e^x",
+    "formula_python": "x*exp(x)",
+    "explanation": "x=-1 で極小をとり、左では 0 に近づき、右では急増する。x e^{-x} と真逆の右肩上がりになる。",
+    "x_range": [-4, 1.6],
+    "y_range": [-1, 8],
+    "sample_ranges": [[-4, 1.6]],
+    "distractor_ids": ["calc_x_exp_negx", "calc_x2_exp_negx", "exp_basic", "calc_x_logx"]
+  },
+  {
+    "id": "calc_exp_neg_square",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=e^{-x^2}",
+    "formula_python": "exp(-(x**2))",
+    "explanation": "原点で最大となる左右対称の山型。指数の中身が負の2次式なので、両端で急速に 0 に近づく。",
+    "x_range": [-3, 3],
+    "y_range": [-0.1, 1.2],
+    "sample_ranges": [[-3, 3]],
+    "distractor_ids": ["calc_x2_over_x2p1", "trig_cos_double", "radical_semicircle", "calc_x2_exp_negx"]
+  },
+  {
+    "id": "trig_sin_shifted_phase",
+    "category": "trig",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\sin\\left(x+\\dfrac{\\pi}{4}\\right)",
+    "formula_python": "sin(x+pi/4)",
+    "explanation": "sin x を左に \\frac{\\pi}{4} だけ平行移動した形。周期も振幅も同じなので、位相だけで見抜く問題。",
+    "x_range": [-6.4, 6.4],
+    "y_range": [-1.6, 1.6],
+    "sample_ranges": [[-6.4, 6.4]],
+    "distractor_ids": ["trig_sin", "trig_cos", "trig_cos_double", "trig_sin_double"]
+  },
+  {
+    "id": "trig_tan_half",
+    "category": "trig",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\tan\\dfrac{x}{2}",
+    "formula_python": "tan(x/2)",
+    "explanation": "原点を通る奇関数だが、周期は 2\\pi になる。漸近線の間隔が tan x より広いことが決め手。",
+    "x_range": [-7, 7],
+    "y_range": [-4, 4],
+    "sample_ranges": [[-7, -3.3], [-3.0, 3.0], [3.3, 7]],
+    "distractor_ids": ["trig_tan", "trig_sin_double", "trig_cos_double", "trig_sin"]
+  },
+  {
+    "id": "calc_log_over_x",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{\\log x}{x}",
+    "formula_python": "log(x)/x",
+    "explanation": "x>0 で定義され、x=e で極大をとったあと 0 に近づく。0付近では下へ深く落ちるのが特徴。",
+    "x_range": [-0.2, 8],
+    "y_range": [-4, 0.6],
+    "sample_ranges": [[0.18, 8]],
+    "distractor_ids": ["calc_x_logx", "log_basic", "calc_x_over_x2p1", "calc_x_exp_negx"]
+  },
+  {
+    "id": "calc_x2_over_x2p1",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{x^2}{x^2+1}",
+    "formula_python": "x**2/(x**2+1)",
+    "explanation": "y軸対称で、原点で最小値 0 をとり、両端では 1 に近づく。有界な偶関数として典型的。",
+    "x_range": [-5, 5],
+    "y_range": [-0.1, 1.2],
+    "sample_ranges": [[-5, 5]],
+    "distractor_ids": ["calc_exp_neg_square", "rational_shifted_square", "radical_root_decay", "calc_x_over_x2p1"]
+  },
+  {
+    "id": "calc_x3_over_x2p1",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{x^3}{x^2+1}",
+    "formula_python": "x**3/(x**2+1)",
+    "explanation": "原点対称で、両端では斜めの直線 y=x に近づく。S字と斜漸近線が同居するのが特徴。",
+    "x_range": [-5, 5],
+    "y_range": [-5.5, 5.5],
+    "sample_ranges": [[-5, 5]],
+    "distractor_ids": ["rational_oblique", "calc_x_over_x2p1", "cubic_monotone", "calc_x_over_sqrt_x2p1"]
+  },
+  {
+    "id": "calc_x_over_sqrt_x2p1",
+    "category": "calc",
+    "difficulty": "hard",
+    "formula_latex": "f(x)=\\dfrac{x}{\\sqrt{x^2+1}}",
+    "formula_python": "x/sqrt(x**2+1)",
+    "explanation": "原点対称で単調増加しつつ、上下から \\pm1 に近づく。飽和するS字として見抜きたい。",
+    "x_range": [-5, 5],
+    "y_range": [-1.2, 1.2],
+    "sample_ranges": [[-5, 5]],
+    "distractor_ids": ["calc_x_over_x2p1", "trig_tan", "calc_x3_over_x2p1", "calc_x_exp_negx"]
   }
 ]

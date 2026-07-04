@@ -4,3 +4,4 @@ out
 next-env.d.ts
 public/graphs
 __pycache__
+.vercel

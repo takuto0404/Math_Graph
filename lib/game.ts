@@ -3,13 +3,13 @@ import { Difficulty, SessionQuestion } from "./types";
 
 const SESSION_LENGTH = 10;
 const difficultyPlan: Difficulty[] = [
-  "easy",
-  "easy",
-  "easy",
-  "easy",
-  "medium",
-  "medium",
-  "medium",
+  "hard",
+  "hard",
+  "hard",
+  "hard",
+  "hard",
+  "hard",
+  "hard",
   "hard",
   "hard",
   "hard",
@@ -41,7 +41,7 @@ function pickByDifficulty(difficulty: Difficulty, usedIds: Set<string>) {
 }
 
 function buildOptions(problemId: string, distractorIds: string[]) {
-  const distractors = shuffle(distractorIds).slice(0, 3);
+  const distractors = distractorIds.slice(0, 3);
   if (distractors.length < 3) {
     throw new Error(`Problem ${problemId} does not have enough distractors`);
   }
